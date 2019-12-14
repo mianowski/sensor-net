@@ -16,10 +16,9 @@ public:
     PlatformService()
     {}
 
-    bool add_measurement(int sensor_id, int measurement)
+    void add_measurement(int sensor_id, int measurement)
     {
         std::cout << "Added measurement: " << measurement << "form sensor: " << sensor_id << std::endl;
-        return false;
     }
 
     int subscribe()

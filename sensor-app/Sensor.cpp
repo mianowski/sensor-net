@@ -22,7 +22,10 @@ int main()
 
         // Make the call.
         RcfClient<I_PlatformService> sensor( RCF::TcpEndpoint(networkInterface, port) );
-
+        int measurement = std::rand();
+        int sensor_id = std::rand();
+        sensor.add_measurement(RCF::Oneway, sensor_id, measurement);
+    
     }
     catch(const RCF::Exception & e)
     {

@@ -15,16 +15,18 @@ int main()
 
     try
     {
-
         std::string networkInterface = "localhost";
         int port = 50001;
         std::cout << "Connecting to server on " << networkInterface << ":" << port << "." << std::endl;
 
 
 
-        // RcfClient<I_PlatformService> platformClient( RCF::TcpEndpoint(networkInterface, port) );
-        // const int client_id = platformClient.subscribe(RCF::Twoway);
-        // platformClient.unsubscribe(client_id);
+        RcfClient<I_PlatformService> platformClient( RCF::TcpEndpoint(networkInterface, port) );
+        const int client_id = platformClient.subscribe(RCF::Twoway);
+        platformClient.unsubscribe(client_id);
+
+        std::cout << "Press Enter to exit..." << std::endl;
+        std::cin.get();
 
     }
     catch(const RCF::Exception & e)
