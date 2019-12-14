@@ -1,4 +1,13 @@
-add_executable(sensor main.cpp)
-include_directories(
+
+ADD_DEFINITIONS( ${RCF_DEFINES} )
+
+INCLUDE_DIRECTORIES(
+    ${RCF_INCLUDES} 
     ${CMAKE_SOURCE_DIR}/include
 )
+
+ADD_EXECUTABLE(
+    Sensor
+    Sensor.cpp)
+
+TARGET_LINK_LIBRARIES( Sensor RcfLib ${RCF_LIBS} )
