@@ -9,16 +9,30 @@
 
 #include "PlatformInterface.hpp"
 
-class DemoService
+class PlatformService
 {
+    std::vector<int> buffer;
 public:
-    // Reverses the order of strings in the vector.
-    void Reverse(std::vector<std::string> &v)
+    PlatformService()
+    {}
+
+    bool add_measurement(int sensor_id, int measurement)
     {
-        std::cout << "Reversing a vector of strings...\n";
-        std::vector<std::string> w;
-        std::copy(v.rbegin(), v.rend(), std::back_inserter(w));
-        v.swap(w);
+        std::cout << "Added measurement: " << measurement << "form sensor: " << sensor_id << std::endl;
+        return false;
+    }
+
+    int subscribe()
+    {
+        int client_id = 0;
+        std::cout << "New client subscribed, got id: "<< client_id <<  std::endl;
+        return client_id;
+    }
+
+    bool unsubscribe(int client_id)
+    {
+        std::cout << "Client of id: "<< client_id << " unsubscribed" <<  std::endl;
+        return false;
     }
 };
 
@@ -26,12 +40,12 @@ int main()
 {
     RCF::RcfInit rcfInit;
 
-	std::string networkInterface = "0.0.0.0";
+	std::string networkInterface = "localhost";
 	int port = 50001;
 	std::cout << "Starting server on " << networkInterface << ":" << port << "." << std::endl;
 
-    // Start a TCP server, and expose DemoService.
-    DemoService demoService;
+    // Start a TCP server, and expose PlatformService.
+    PlatformService demoService;
     RCF::RcfServer server( RCF::TcpEndpoint(networkInterface, port) );
     server.bind<I_PlatformService>(demoService);
     server.start();

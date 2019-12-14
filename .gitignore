@@ -6,7 +6,4 @@
 
 
 vendor/
-cmake/**/CMakeFiles/
-cmake/**/Makefile
-cmake/**/cmake_install.cmake
-cmake/bin/
+cmake/

@@ -16,32 +16,16 @@ int main()
     try
     {
 
-        std::string networkInterface = "127.0.0.1";
+        std::string networkInterface = "localhost";
         int port = 50001;
         std::cout << "Connecting to server on " << networkInterface << ":" << port << "." << std::endl;
 
-        // Setup a vector of strings.
-        std::vector<std::string> v;
-        v.push_back("one");
-        v.push_back("two");
-        v.push_back("three");
 
-        // Print them out.
-        std::cout << "Before:\n";
-        std::copy(
-            v.begin(), 
-            v.end(), 
-            std::ostream_iterator<std::string>(std::cout, "\n"));
 
-        // Make the call.
-        RcfClient<I_PlatformService>( RCF::TcpEndpoint(networkInterface, port) ).Reverse(v);
+        // RcfClient<I_PlatformService> platformClient( RCF::TcpEndpoint(networkInterface, port) );
+        // const int client_id = platformClient.subscribe(RCF::Twoway);
+        // platformClient.unsubscribe(client_id);
 
-        // Print them out again. This time they are in reverse order.
-        std::cout << "\nAfter:\n";
-        std::copy(
-            v.begin(), 
-            v.end(), 
-            std::ostream_iterator<std::string>(std::cout, "\n"));
     }
     catch(const RCF::Exception & e)
     {

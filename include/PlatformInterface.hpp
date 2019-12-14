@@ -9,7 +9,9 @@
 #include <SF/vector.hpp>
 
 RCF_BEGIN(I_PlatformService, "I_PlatformService")
-    RCF_METHOD_V1(void, Reverse, std::vector<std::string> &);
+    RCF_METHOD_R2(bool, add_measurement, int, int);
+    RCF_METHOD_R0(bool, subscribe);
+    RCF_METHOD_R1(bool, unsubscribe, int);
 RCF_END(I_PlatformService);
 
 #endif // ! INCLUDE_PLATFORMINTERFACE_HPP

@@ -20,28 +20,9 @@ int main()
         int port = 50001;
         std::cout << "Connecting to server on " << networkInterface << ":" << port << "." << std::endl;
 
-        // Setup a vector of strings.
-        std::vector<std::string> v;
-        v.push_back("one");
-        v.push_back("two");
-        v.push_back("three");
-
-        // Print them out.
-        std::cout << "Before:\n";
-        std::copy(
-            v.begin(), 
-            v.end(), 
-            std::ostream_iterator<std::string>(std::cout, "\n"));
-
         // Make the call.
-        RcfClient<I_PlatformService>( RCF::TcpEndpoint(networkInterface, port) ).Reverse(v);
+        RcfClient<I_PlatformService> sensor( RCF::TcpEndpoint(networkInterface, port) );
 
-        // Print them out again. This time they are in reverse order.
-        std::cout << "\nAfter:\n";
-        std::copy(
-            v.begin(), 
-            v.end(), 
-            std::ostream_iterator<std::string>(std::cout, "\n"));
     }
     catch(const RCF::Exception & e)
     {
