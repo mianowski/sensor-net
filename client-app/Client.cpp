@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "PlatformInterface.hpp"
+#include "ClientInterface.hpp"
 
 #include <RCF/RCF.hpp>
 

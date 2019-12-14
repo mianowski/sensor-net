@@ -7,7 +7,7 @@
 
 #include <RCF/RCF.hpp>
 
-
+#include "ClientInterface.hpp"
 #include "PlatformInterface.hpp"
 #include "PlatformService.hpp"
 
@@ -24,6 +24,7 @@ int main()
 
     PlatformService demoService(buffer_size);
     RCF::RcfServer server( RCF::TcpEndpoint(networkInterface, port) );
+
     server.bind<I_PlatformService>(demoService);
     server.start();
 

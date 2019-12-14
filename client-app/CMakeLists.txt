@@ -8,6 +8,7 @@ INCLUDE_DIRECTORIES(
 
 ADD_EXECUTABLE(
     Client
-    Client.cpp)
+    Client.cpp
+    ClientService.cpp)
 
 TARGET_LINK_LIBRARIES( Client RcfLib ${RCF_LIBS} )
