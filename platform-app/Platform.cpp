@@ -7,44 +7,22 @@
 
 #include <RCF/RCF.hpp>
 
+
 #include "PlatformInterface.hpp"
+#include "PlatformService.hpp"
 
-class PlatformService
-{
-    std::vector<int> buffer;
-public:
-    PlatformService()
-    {}
-
-    void add_measurement(int sensor_id, int measurement)
-    {
-        std::cout << "Added measurement: " << measurement << "form sensor: " << sensor_id << std::endl;
-    }
-
-    int subscribe()
-    {
-        int client_id = 0;
-        std::cout << "New client subscribed, got id: "<< client_id <<  std::endl;
-        return client_id;
-    }
-
-    bool unsubscribe(int client_id)
-    {
-        std::cout << "Client of id: "<< client_id << " unsubscribed" <<  std::endl;
-        return false;
-    }
-};
 
 int main()
 {
     RCF::RcfInit rcfInit;
 
-	std::string networkInterface = "localhost";
-	int port = 50001;
-	std::cout << "Starting server on " << networkInterface << ":" << port << "." << std::endl;
-
+    std::string networkInterface = "localhost";
+    int port = 50001;
+    std::cout << "Starting server on " << networkInterface << ":" << port << "." << std::endl;
+    uint buffer_size(3);
     // Start a TCP server, and expose PlatformService.
-    PlatformService demoService;
+
+    PlatformService demoService(buffer_size);
     RCF::RcfServer server( RCF::TcpEndpoint(networkInterface, port) );
     server.bind<I_PlatformService>(demoService);
     server.start();

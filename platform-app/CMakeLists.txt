@@ -7,6 +7,7 @@ INCLUDE_DIRECTORIES(
 
 ADD_EXECUTABLE(
     Platform
-    Platform.cpp)
+    Platform.cpp
+    PlatformService.cpp)
 
 TARGET_LINK_LIBRARIES( Platform RcfLib ${RCF_LIBS} )
