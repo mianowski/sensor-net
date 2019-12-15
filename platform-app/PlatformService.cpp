@@ -30,11 +30,8 @@ void PlatformService::changeBufferSize(const uint new_size)
     buffer.resize(new_size);
 }
 
-void PlatformService::notifySubscribers()
+std::vector<Measurement> PlatformService::getCurrentMeasurements()
 {
-    for(auto subscriber: subscribers)
-    {
-        
-    }
-    std::cout << "Subscribers notified!" <<  std::endl;
+    std::vector<Measurement> vec{{0,1}};
+    return vec;
 }

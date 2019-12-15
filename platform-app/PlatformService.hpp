@@ -17,7 +17,7 @@ public:
     int subscribe();
     bool unsubscribe(int client_id);
     void changeBufferSize(const uint new_size);
-    void notifySubscribers();
+    std::vector<Measurement> getCurrentMeasurements();
 };
 
 #endif // ! INCLUDE_PLATFORMSERVICE_HPP

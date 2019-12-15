@@ -27,6 +27,17 @@ int main()
 
     server.bind<I_PlatformService>(demoService);
     server.start();
+    typedef std::shared_ptr< RCF::Publisher<I_ClientService> > ClientServicePublisherPtr;
+    ClientServicePublisherPtr pubPtr = server.createPublisher<I_ClientService>();
+    std::vector<Measurement> measVec {{0,1}, {2,3}};
+    while (std::cin.get())
+    {
+        sleep(1000);
+        
+        pubPtr->publish().getNotified(measVec);
+    }
+    // Close the publisher.
+    pubPtr->close();
 
     std::cout << "Press Enter to exit..." << std::endl;
     std::cin.get();
